@@ -25,9 +25,6 @@ const authors = [{
     },
 ]
 
-const structuredAutors = [{
-
-}]
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
@@ -57,9 +54,16 @@ app.get("/authors/:id/books/", (req, res) => {
 })
 
 app.get("/json/authors/:id", (req, res) => {
-
+    const index = req.params.id - 1;
+    let authorObject = {};
+    authorObject.name = authors[index].name;
+    authorObject.nationality = authors[index].nationality;
+    res.send(authorObject);
 })
 
 app.get("/json/authors/:id/books", (req, res) => {
-
+    const index = req.params.id - 1;
+    let bookObject = {};
+    bookObject.books = authors[index].books;
+    res.send(bookObject);
 })
