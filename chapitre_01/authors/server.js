@@ -1,6 +1,3 @@
-const {
-    request
-} = require("express");
 const express = require("express");
 const app = express();
 
@@ -28,6 +25,10 @@ const authors = [{
     },
 ]
 
+const structuredAutors = [{
+
+}]
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 })
@@ -44,15 +45,14 @@ app.get("/authors/:id", (req, res) => {
 app.get("/authors/:id/books/", (req, res) => {
     const index = req.params.id - 1;
     const bookArray = authors[index].books;
-    console.log("bookArray : ", bookArray);
+    // console.log("bookArray : ", bookArray);
     let bookString = "";
 
     for (let i = 0; i < bookArray.length; i++) {
         bookString = bookString + bookArray[i] + ", ";
-        console.log("bookArray : ", bookArray)
+        // console.log("bookArray : ", bookArray)
     }
-
-    console.log("bookString : ", bookString)
+    // console.log("bookString : ", bookString)
     res.send(bookString)
 })
 
