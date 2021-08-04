@@ -29,7 +29,7 @@ const authors = [{
 ]
 
 app.listen(port, () => {
-    console.log(`Sever is running on port ${port}`)
+    console.log(`Server is running on port ${port}`)
 })
 
 app.get("/", (req, res) => {
@@ -44,11 +44,22 @@ app.get("/authors/:id", (req, res) => {
 app.get("/authors/:id/books/", (req, res) => {
     const index = req.params.id - 1;
     const bookArray = authors[index].books;
-    // console.log(bookArray);
+    console.log("bookArray : ", bookArray);
     let bookString = "";
-    for (i = 0; i < bookArray; i++) {
-        bookString += bookArray[i];
+
+    for (let i = 0; i < bookArray.length; i++) {
+        bookString = bookString + bookArray[i] + ", ";
+        console.log("bookArray : ", bookArray)
     }
-    console.log("bookString", bookString)
-    res.send(`${bookString}`)
+
+    console.log("bookString : ", bookString)
+    res.send(bookString)
+})
+
+app.get("/json/authors/:id", (req, res) => {
+
+})
+
+app.get("/json/authors/:id/books", (req, res) => {
+
 })
