@@ -3,9 +3,6 @@ const express = require("express");
 const app = express();
 
 const port = 8000;
-app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`)
-})
 
 app.get("/:id", (req, res) => {
     const pokemonId = req.params.id;
@@ -16,4 +13,8 @@ app.get("/:id", (req, res) => {
         // console.log(pokemon)
         res.send(pokemon);
     })
+})
+
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`)
 })

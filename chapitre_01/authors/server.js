@@ -25,11 +25,6 @@ const authors = [{
     },
 ]
 
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
-})
-
 app.get("/", (req, res) => {
     res.send("Authors API")
 })
@@ -66,4 +61,8 @@ app.get("/json/authors/:id/books", (req, res) => {
     let bookObject = {};
     bookObject.books = authors[index].books;
     res.send(bookObject);
+})
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`)
 })
